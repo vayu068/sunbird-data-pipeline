@@ -28,16 +28,16 @@ druid_request_logging_type: "file"
 
 #Druid Extensions
 
-druid_storge_type: "aws"
+druid_storge_type: "s3"
 
-druid_extensions_list : '"druid-aws-extensions", "graphite-emitter", "postgresql-metadata-storage", "druid-kafka-indexing-service"'
+druid_extensions_list : '"druid-s3-extensions", "graphite-emitter", "postgresql-metadata-storage", "druid-kafka-indexing-service"'
 
 druid_community_extensions:
   - graphite-emitter
 
 # End of druid_extensions
 
-druid_indexing_logs_type: aws
+druid_indexing_logs_type: s3
 druid_indexing_log_dir: /var/druid/indexing-logs
 druid_indexing_storage_type : metadata
 druid_indexing_task_basedir : "/var/task"
