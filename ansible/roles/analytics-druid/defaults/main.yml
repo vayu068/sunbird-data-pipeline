@@ -117,7 +117,7 @@ default_druid_configs:
    druid_postgres_user: "{{ druid_postgres_user | default('druid@' + postgres.db_url) }}"
    #Druid AWS Details 
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
-#    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
+   azure_account_name: "{{ sunbird_druid_storage_account_name }}"
    
    
    druid.storage.bucket: "{{ aws_bucket }}"
