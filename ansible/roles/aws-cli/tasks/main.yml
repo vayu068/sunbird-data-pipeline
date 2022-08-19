@@ -9,7 +9,8 @@
   register: aws_cli_unarchive_installer
 
 - name: Install awscli package.
-  shell: sudo ./tmp/awscli-bundle/install
+  become: yes
+  shell: ./tmp/aws/install
   when: aws_cli_unarchive_installer.changed
 
 
