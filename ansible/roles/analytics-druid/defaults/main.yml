@@ -115,8 +115,10 @@ default_druid_configs:
    #Druid AWS Details 
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
 #    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
-   druid.storage.bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
-   druid.storage.baseKey: "druidlogs"
+   aws_bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
+   s3_basekey: "druidlogs"
+   druid.storage.bucket: "{{ aws_bucket }}"
+   druid.storage.baseKey: "{{ s3_basekey }}"
    druid.storage.disableAcl: true
 #    azure_storage_secret: "{{ sunbird_druid_storage_account_key }}"
 #    azure_container: "{{ druid_azure_container_name }}"
@@ -176,6 +178,8 @@ default_druid_configs:
    druid_postgres_host: "{{ postgres.db_url }}"
    druid_postgres_port: "{{ postgres.db_port }}"
    druid_postgres_user: "{{ druid_postgres_user | default('druid@' + postgres.db_url) }}"
+   
+   s3_indexer_prefix: "druidlogs"
    #Druid Azure Details
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
 #    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
@@ -183,8 +187,8 @@ default_druid_configs:
    azure_container: "{{ druid_azure_container_name }}"
    #Logging the indexing logs to AWS
    druid.indexer.logs.type: s3
-   druid.indexer.logs.s3Bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
-   druid.indexer.logs.s3Prefix: "druidlogs"
+   druid.indexer.logs.s3Bucket: "{{ aws_bucket }}"
+   druid.indexer.logs.s3Prefix: "{{ s3_indexer_prefix }}"
 #    druid_log_azure_container: "{{ druid_azure_container_name }}"
 #    druid_log_azure_folder: "druidlogs"
    druid_coordinator_heap_size: 128m
