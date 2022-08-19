@@ -104,6 +104,9 @@ druid_middlemanager_gc_logdir: "{{ druid_crash_logdir }}/gc.log"
 
 druid_middlemanager_peon_segmentcache_path: "/var/segment_cache"
 druid_azure_container_name: "telemetry-data-store"
+aws_bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
+s3_basekey: "druidlogs"
+s3_indexer_prefix: "druidlogs"
 
 default_druid_configs:
   raw:
@@ -115,8 +118,8 @@ default_druid_configs:
    #Druid AWS Details 
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
 #    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
-   aws_bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
-   s3_basekey: "druidlogs"
+   
+   
    druid.storage.bucket: "{{ aws_bucket }}"
    druid.storage.baseKey: "{{ s3_basekey }}"
    druid.storage.disableAcl: true
@@ -179,7 +182,7 @@ default_druid_configs:
    druid_postgres_port: "{{ postgres.db_port }}"
    druid_postgres_user: "{{ druid_postgres_user | default('druid@' + postgres.db_url) }}"
    
-   s3_indexer_prefix: "druidlogs"
+   
    #Druid Azure Details
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
 #    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
