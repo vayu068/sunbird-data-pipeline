@@ -115,8 +115,8 @@ default_druid_configs:
    #Druid AWS Details 
    druid_postgres_pass: "{{ dp_vault_druid_postgress_pass }}"
 #    azure_account_name: "{{ sunbird_druid_storage_account_name }}"
-   druid.indexer.logs.s3Bucket: "{{ sunbird_druid_storage_account_name }}"
-   druid.storage.baseKey: "{{ druid_azure_container_name }}"
+   druid.storage.bucket: "{{ sunbird_druid_storage_account_name }}/{{ druid_azure_container_name }}"
+   druid.storage.baseKey: "druidlogs"
    druid.storage.disableAcl: true
 #    azure_storage_secret: "{{ sunbird_druid_storage_account_key }}"
 #    azure_container: "{{ druid_azure_container_name }}"
